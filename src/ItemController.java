@@ -16,7 +16,7 @@ public class ItemController {
 
 	public List<Item> get() throws Exception {
 		//TODO 15: what should this method return? HINT: a relevant call to a fridgeDSC method
-		return null;
+        return fridgeDSC.getAllItems();
 	}
 
 	// To perform some quick tests
@@ -26,11 +26,11 @@ public class ItemController {
 		try {
 			// CHANGE the username and password to match yours
 			// CHANGE the first param to your database host if you are not using latcs7
-			ItemController ic = new ItemController("latcs7.cs.latrobe.edu.au:3306", "your-mysql-username", "your-mysql-password");
-			/* UNCOMMENT the following and add the relevant parameters/arguments to do your testing
-			System.out.println(gc.get());
+			//ItemController ic = new ItemController("latcs7.cs.latrobe.edu.au:3306", "your-mysql-username", "your-mysql-password");
+            ItemController ic = new ItemController("localhost:3306/fridgedb", "", "");
 
-			*/
+            // test list all items
+            System.out.println(ic.get());
 
 		} catch (Exception exp) {
 			exp.printStackTrace();

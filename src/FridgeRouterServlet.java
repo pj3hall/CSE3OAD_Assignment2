@@ -1,4 +1,4 @@
-/*import java.io.*;
+import java.io.*;
 import java.lang.reflect.*;
 
 import javax.servlet.*;
@@ -30,15 +30,15 @@ public class FridgeRouterServlet extends HttpServlet {
 	public static final String CONTROLLER_STR = "Controller";
 
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO 16: set the response CONTENT_TYPE and CHARACTER_ENCODING
-
-		Object responseObject = null;
+	    // TODO 16: set the response CONTENT_TYPE and CHARACTER_ENCODING
+        response.setContentType(CONTENT_TYPE + "; " + CHARACTER_ENCODING);
+        Gson gson = new Gson();
 
 		// TODO 17: grab the path info from HttpServletRequest argument
-        String pathInfo = ""; // <-- some changes needed here
+        String pathInfo = request.getPathInfo();
 
         // TODO 18: grab the http method from HttpServletRequest argument
-        String httpMethod = ""; // <-- some changes needed here
+        String httpMethod = request.getMethod();
 
         // pathInfo will be in format: /{resource-name}/{query-string}
         // we want resource-name; we split on "/" and take the 
@@ -245,4 +245,4 @@ public class FridgeRouterServlet extends HttpServlet {
 		return message;
 	}
 
-}*/
+}
