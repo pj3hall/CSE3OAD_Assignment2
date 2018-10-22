@@ -58,10 +58,10 @@ public class FridgeRouterServlet extends HttpServlet {
 	        // - resource-name GroCerY will become class Grocery, or ...
 
 	        // TODO 18: from pathInfoArray, grab the modelName
-	        String modelName = ""; // <-- some changes needed here
+	        String modelName = pathInfoArray[1];
 
 	        // TODO 19: make the modelName first character uppercase and all other characters lowercase
-	        modelName = ""; // <-- some changes needed here; you may do this using more than 1 line of code 
+	        modelName = modelName.substring(0,1).toUpperCase() + modelName.substring(1).toLowerCase();
 	        
 	        // the controller is needed for the matching action defined by the http method
 	        String controllerName = String.join("", modelName, CONTROLLER_STR);
@@ -71,7 +71,7 @@ public class FridgeRouterServlet extends HttpServlet {
 	        //		model class is Grocery and matching controller class 
 	        //		is GroceryController
 
-	        // TODO 20: find the controllerClass using String controllerName, 
+	        // TODO 20: find the controllerClass using String controllerName
 	        Class<?> controllerClass = null; // <-- some changes needed here, hint: Class.forName(...)
 
 	        // TODO 21: find the modelClass using String modelName
