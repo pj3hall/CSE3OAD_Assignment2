@@ -145,13 +145,13 @@ public class FridgeRouterServlet extends HttpServlet {
 					if (pathInfoArray.length >= 3) {
 
 						// TODO 26: find the modelId in pathInfoArray (don't forget to parse to int)
-						modelId = 0; // <-- some changes needed here
+						modelId = Integer.parseInt(pathInfoArray[2]); // <-- some changes needed here
 
 						// TODO 27: identify method get with id
-						method = null; // <-- some changes needed here
+						method = controllerClass.getMethod("update", int.class); // <-- some changes needed here
 
 						//TODO 28: invoke method on controllerInstance, passing modelId
-						responseObject = null; // <-- some changes needed here
+						responseObject = method.invoke(controllerInstance, modelId); // <-- some changes needed here
 
 						if (responseObject == null)
 							throw new ResourceNotFoundException(modelName + " with id " + modelId + " not found! Cannot Update!");
@@ -162,13 +162,13 @@ public class FridgeRouterServlet extends HttpServlet {
 					if (pathInfoArray.length >= 3) {
 
 						// TODO 29: find the modelId in pathInfoArray (don't forget to parse to int)
-						modelId = 0; // <-- some changes needed here
+                        modelId = Integer.parseInt(pathInfoArray[2]); // <-- some changes needed here
 
 						// TODO 30: identify method get with id
-						method = null; // <-- some changes needed here
+                        method = controllerClass.getMethod("delete", int.class); // <-- some changes needed here
 
 						//TODO 31: invoke method on controllerInstance, passing modelId
-						responseObject = null; // <-- some changes needed here
+                        responseObject = method.invoke(controllerInstance, modelId); // <-- some changes needed here
 
 						if (Integer.parseInt(responseObject.toString()) <= 0)
 							throw new ResourceNotFoundException(modelName + " with id " + modelId + " not found! Cannot Delete!");
@@ -211,20 +211,26 @@ public class FridgeRouterServlet extends HttpServlet {
 					// set message to intercepted exception
 					// see provided Validation Framework Validator class (exception handling part) for how to
 					// 	- this was covered in Lab 7
+                if (exp.getCause() instanceof UpdateNotAllowedException) {
+                    response.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+                    message = exp.getCause().getMessage();
+                }
 
-				// TODO 33: identify instanceof ValidationException exception
+                // TODO 33: identify instanceof ValidationException exception
 					// set response status to SC_PRECONDITION_FAILED
 					// set message to intercepted exception
 					// see provided Validation Framework Validator class (exception handling part) for how to
 					// 	- this was covered in Lab 7
-
+                if (exp.getCause() instanceof UpdateNotAllowedException) {
+                    response.setStatus(HttpServletResponse.SC_PRECONDITION_FAILED);
+                    message = exp.getCause().getMessage();
+                }
 			}
 
 			response.getWriter().write(new Gson().toJson(buildMessage(message)));
 		}
 
 	}
-
 
 	// HELPER METHODS
     private String buildResourceData(HttpServletRequest request) throws Exception {
