@@ -32,7 +32,8 @@ public class FridgeRouterServlet extends HttpServlet {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    // TODO 16: set the response CONTENT_TYPE and CHARACTER_ENCODING
         response.setContentType(CONTENT_TYPE + "; " + CHARACTER_ENCODING);
-        Gson gson = new Gson();
+
+        Object responseObject = null;
 
 		// TODO 17: grab the path info from HttpServletRequest argument
         String pathInfo = request.getPathInfo();
@@ -93,7 +94,6 @@ public class FridgeRouterServlet extends HttpServlet {
 
 			// TODO 22: create an instance of the controller, using the constructor identified on the previous line
 			Object controllerInstance = constructor.newInstance(new Object[0]); // <-- some changes needed here
-
             //validatorMap.put(validatorClassName, validatorClass.getConstructor().newInstance(new Object[0]));
             //Object validatorInstance = validatorMap.get(validatorClassName);
 
@@ -121,10 +121,10 @@ public class FridgeRouterServlet extends HttpServlet {
 					else { 
 
 						// TODO 24: identify method get with no id
-						method = null; // <-- some changes needed here
+						method = controllerClass.getMethod("get"); // <-- some changes needed here
 
 						//TODO 25: invoke method on controllerInstance
-						responseObject = null; // <-- some changes needed here
+						responseObject = method.invoke(controllerInstance); // <-- some changes needed here
 					}
 					break;
 				case HTTP_POST: // NOTE: this case is given fully complete; it is the most complex part; use it as a reference example
