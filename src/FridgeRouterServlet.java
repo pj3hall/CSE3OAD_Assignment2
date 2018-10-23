@@ -72,10 +72,10 @@ public class FridgeRouterServlet extends HttpServlet {
 	        //		is GroceryController
 
 	        // TODO 20: find the controllerClass using String controllerName
-	        Class<?> controllerClass = null; // <-- some changes needed here, hint: Class.forName(...)
+	        Class<?> controllerClass = Class.forName(controllerName); // <-- some changes needed here, hint: Class.forName(...)
 
 	        // TODO 21: find the modelClass using String modelName
-	        Class<?> modelClass = null; // <-- some changes needed here, hint: Class.forName(...)
+	        Class<?> modelClass = Class.forName(modelName); // <-- some changes needed here, hint: Class.forName(...)
 
 			// getting database config info from web.xml, putting the info in
 			// a string array
@@ -92,7 +92,10 @@ public class FridgeRouterServlet extends HttpServlet {
 			);
 
 			// TODO 22: create an instance of the controller, using the constructor identified on the previous line
-			Object controllerInstance = null; // <-- some changes needed here	
+			Object controllerInstance = constructor.newInstance(new Object[0]); // <-- some changes needed here
+
+            //validatorMap.put(validatorClassName, validatorClass.getConstructor().newInstance(new Object[0]));
+            //Object validatorInstance = validatorMap.get(validatorClassName);
 
 			int modelId = 0;
 			Method method = null;
@@ -106,14 +109,14 @@ public class FridgeRouterServlet extends HttpServlet {
 					if (pathInfoArray.length >= 3) {
 
 						// TODO 23: find the modelId in pathInfoArray (don't forget to parse to int)
-						modelId = 0; // <-- some changes needed here	
-						method = controllerClass.getMethod("get", int.class);
+						modelId = Integer.parseInt(pathInfoArray[2]); // <-- some changes needed here
+                        method = controllerClass.getMethod("get", int.class);
 
 						responseObject = method.invoke(controllerInstance, modelId);
 
 						if (responseObject == null)
 							throw new ResourceNotFoundException(modelName + " with id " + modelId + " not found!");						
-					} 
+					}
 					// else find the matching controllerClass method get()
 					else { 
 

@@ -10,16 +10,6 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/mysql-connector-java-bin.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="library" name="Fridge" level="project" />
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
           <root url="file://$MODULE_DIR$/lib" />
         </CLASSES>
         <JAVADOC />
