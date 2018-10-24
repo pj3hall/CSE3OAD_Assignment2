@@ -99,7 +99,7 @@ public class FridgeRouterServlet extends HttpServlet {
 			);
 
 			// TODO 22: create an instance of the controller, using the constructor identified on the previous line
-			Object controllerInstance = constructor.newInstance(new Object[0]); // <-- some changes needed here
+			Object controllerInstance = constructor.newInstance(new Object[3]); // <-- some changes needed here
             //validatorMap.put(validatorClassName, validatorClass.getConstructor().newInstance(new Object[0]));
             //Object validatorInstance = validatorMap.get(validatorClassName);
 

@@ -239,17 +239,17 @@ public class FridgeDSC {
     	return formattedDaysAgo;			
 	}
 
-
 	public static void main(String[] args) throws Exception {
 		//FridgeDSC dsc = new FridgeDSC("latcs7.cs.latrobe.edu.au:3306", "s3cooshna", "j2Pth2f5GntPTFn9mmNk");
 		FridgeDSC dsc = new FridgeDSC("localhost:3306/fridgedb", "", "");
 
 		try {
 			dsc.connect();
-			System.out.println(dsc.getAllGroceries());
-			System.out.println(dsc.removeGrocery(455));
-			System.out.println(dsc.useGrocery(455));
-			System.out.println(dsc.useGrocery(19));
+			//System.out.println(dsc.getAllGroceries());
+			//System.out.println(dsc.removeGrocery(455));
+			//System.out.println(dsc.useGrocery(455));
+			//System.out.println(dsc.useGrocery(19));
+			System.out.println(dsc.searchGrocery(5));
 		} catch (Exception exp) {
 			exp.printStackTrace();
 		}
