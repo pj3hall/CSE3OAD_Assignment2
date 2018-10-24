@@ -1,3 +1,8 @@
+/** Name: 		Peter HALL
+ *  Student #:	15312142
+ *  Subject:	CSE3OAD
+ */
+
 import java.io.*;
 import java.lang.reflect.*;
 
@@ -30,7 +35,8 @@ public class FridgeRouterServlet extends HttpServlet {
 	public static final String CONTROLLER_STR = "Controller";
 
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    // TODO 16: set the response CONTENT_TYPE and CHARACTER_ENCODING
+
+		// TODO 16: set the response CONTENT_TYPE and CHARACTER_ENCODING
         response.setContentType(CONTENT_TYPE + "; " + CHARACTER_ENCODING);
 
         Object responseObject = null;

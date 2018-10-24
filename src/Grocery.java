@@ -1,3 +1,8 @@
+/** Name: 		Peter HALL
+ *  Student #:	15312142
+ *  Subject:	CSE3OAD
+ */
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 

@@ -1,3 +1,8 @@
+/** Name: 		Peter HALL
+ *  Student #:	15312142
+ *  Subject:	CSE3OAD
+ */
+
 import java.lang.reflect.*;
 import java.lang.annotation.Annotation;
 import java.util.*;
